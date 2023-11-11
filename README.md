@@ -1,5 +1,6 @@
 # LinkedListUtils
-some utility methods for Linked Lists, using Unit4's Linked List implementation
+some utility methods for Linked Lists, using Unit4's Linked List implementation.
+
 INSTRUCTIONS:
 1. Download and extract AhYes.dll and Unit4.dll to desktop
 2. Open visual studio and create a new project as ConsoleApp  
