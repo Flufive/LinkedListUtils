@@ -1,4 +1,4 @@
-# LinkedListUtils Documentation
+# *LinkedListUtils* Documentation
 
 This documentation provides information about various utility methods for linked lists.
 
@@ -10,13 +10,13 @@ public static Node<T> mergeLists<T>(Node<T> head1, Node<T> head2)
 ```
 ### Parameters
 
--head1: The head node of the first linked list.
+- head1: The head node of the first linked list.
 
--head2: The head node of the second linked list.
+- head2: The head node of the second linked list.
 
 ### Type Parameters
 
-T: The type of values stored in the linked lists.
+- T: The type of values stored in the linked lists.
 
 ### Return
 
@@ -35,11 +35,11 @@ public static void PrintChain<T>(Node<T> head)
 
 ### Parameters
 
--head: The head node of the linked list.
+- head: The head node of the linked list.
 
 ### Type Parameters
 
--T: The type of values stored in the linked list.
+- T: The type of values stored in the linked list.
 
 ### Description
 
@@ -57,7 +57,7 @@ public static T SumChain<T>(Node<T> head)
 -head: The head node of the linked list.
 
 ### Type Parameters
--T: The type of values stored in the linked list.
+- T: The type of values stored in the linked list.
 
 ### Return
 The sum of the values in the linked list.
@@ -73,7 +73,7 @@ public static void AddMaxNumber(Node<int> head)
 ```
 ### Parameters
 
--head: The head node of the integer linked list.
+- head: The head node of the integer linked list.
 
 ### Description
 Adds the maximum number in the integer list to the end of the list.
@@ -88,11 +88,11 @@ public static bool IsExist<T>(Node<T> head, T value)
 
 ### Parameters
 
--head: The head node of the linked list.
--value: The value to search for in the linked list.
+- head: The head node of the linked list.
+- value: The value to search for in the linked list.
 
 ### Type Parameters
--T: The type of values stored in the linked list.
+- T: The type of values stored in the linked list.
 
 ### Return
 True if the specified value exists in the linked list; otherwise, returns false.
@@ -109,11 +109,11 @@ public static Node<T> RemoveValueOnce<T>(Node<T> head, T value)
 ```
 
 ### Parameters
--head: The head node of the list.
--value: The value to remove.
+- head: The head node of the list.
+- value: The value to remove.
 
 ### Type Parameters
--T: The type of values stored in the list.
+- T: The type of values stored in the list.
 
 ### Return
 The head of the updated list.
@@ -134,7 +134,7 @@ public static Node<T> RemoveValueCompletely<T>(Node<T> head, T value)
 -value: The value to be removed.
 
 ### Type Parameters
--T: The type of values stored in the nodes.
+- T: The type of values stored in the nodes.
 
 ### Return
 The head of the updated list.
@@ -151,10 +151,10 @@ public static Node<T> CompressSequences<T>(Node<T> chain)
 ```
 
 ### Parameters
--chain: The head node of the list.
+- chain: The head node of the list.
 
 ### Type Parameters
--T: The type of values stored in the nodes.
+- T: The type of values stored in the nodes.
 
 ### Return
 The head of the updated list.
@@ -171,11 +171,11 @@ public static Node<T> AddToEnd<T>(Node<T> head, T value)
 ```
 
 ### Parameters
--head: The head node of the list.
--value: The value representing the newly added node.
+- head: The head node of the list.
+- value: The value representing the newly added node.
 
 ### Type Parameters
--T: The type of values stored in the nodes.
+- T: The type of values stored in the nodes.
 
 ### Return
 The head of the updated list.
@@ -192,11 +192,11 @@ public static void AddToStart<T>(ref Node<T> head, T value)
 ```
 
 ### Parameters
--head: The head node of the list.
--value: The value representing the newly added node.
+- head: The head node of the list.
+- value: The value representing the newly added node.
 
 ### Type Parameters
--T: The type of values stored in the nodes.
+- T: The type of values stored in the nodes.
 
 ### Description
 Adds a node to the start of a linked list.
@@ -215,7 +215,7 @@ public static Node<T> InsertAtIndex<T>(Node<T> head, T value, int index)
 -index: The index at which the value should be inserted.
 
 ### Type Parameters
--T: The type of values stored in the linked list.
+- T: The type of values stored in the linked list.
 
 ### Return
 The head of the updated list.
@@ -235,7 +235,7 @@ public static Node<T> Reverse<T>(Node<T> head)
 -head: The head node of the linked list.
 
 ### Type Parameters
--T: The type of values stored in the linked list.
+- T: The type of values stored in the linked list.
 
 ### Return
 The new head of the reversed linked list.
@@ -252,10 +252,10 @@ public static int GetLength<T>(Node<T> head)
 ```
 
 ### Parameters
--head: The head node of the linked list.
+- head: The head node of the linked list.
 
 ### Type Parameters
--T: The type of values stored in the linked list.
+- T: The type of values stored in the linked list.
 
 ### Return
 The length of the linked list.
@@ -272,11 +272,11 @@ public static Node<T> GetNthFromEnd<T>(Node<T> head, int n)
 ```
 
 ### Parameters
--head: The head node of the linked list.
--n: The position from the end of the list.
+- head: The head node of the linked list.
+- n: The position from the end of the list.
 
 ### Type Parameters
--T: The type of values stored in the linked list.
+- T: The type of values stored in the linked list.
 
 ### Return
 The node at the specified position from the end of the linked list.
@@ -293,10 +293,10 @@ public static bool HasLoop<T>(Node<T> head)
 ```
 
 ### Parameters
--head: The head node of the linked list.
+- head: The head node of the linked list.
 
 ### Type Parameters
--T: The type of values stored in the linked list.
+- T: The type of values stored in the linked list.
 
 ### Return
 True if a loop is detected; otherwise, false.
@@ -314,10 +314,10 @@ public static Node<T> RemoveDuplicates<T>(Node<T> head)
 ```
 
 ### Parameters
--head: The head node of the sorted linked list.
+- head: The head node of the sorted linked list.
 
 ### Type Parameters
--T: The type of values stored in the linked list.
+- T: The type of values stored in the linked list.
 
 ### Return
 The head of the updated sorted linked list.
@@ -337,7 +337,7 @@ public static Tuple<Node<T>, Node<T>> SplitInHalf<T>(Node<T> head)
 -head: The head node of the linked list to be split.
 
 ### Type Parameters
--T: The type of values stored in the linked list.
+- T: The type of values stored in the linked list.
 
 ### Return
 A tuple containing the heads of the two halves.
@@ -354,10 +354,10 @@ public static Node<T> FindMiddle<T>(Node<T> head)
 ```
 
 ### Parameters
--head: The head node of the linked list.
+- head: The head node of the linked list.
 
 ### Type Parameters
--T: The type of values stored in the linked list.
+- T: The type of values stored in the linked list.
 
 ### Return
 The middle node of the linked list.
@@ -374,11 +374,11 @@ public static Node<T> InsertAtEnd<T>(Node<T> head, T value)
 ```
 
 ### Parameters
--head: The head node of the linked list.
--value: The value to insert.
+- head: The head node of the linked list.
+- value: The value to insert.
 
 ### Type Parameters
--T: The type of values stored in the linked list.
+- T: The type of values stored in the linked list.
 
 ### Return
 The head of the updated linked list.
@@ -412,8 +412,8 @@ private static Node<int> Merge(Node<int> left, Node<int> right)
 ```
 
 ### Parameters
--left: The head of the left sorted linked list.
--right: The head of the right sorted linked list.
+- left: The head of the left sorted linked list.
+- right: The head of the right sorted linked list.
 
 ### Return
 The head of the merged sorted linked list.
