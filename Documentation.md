@@ -54,7 +54,7 @@ public static T SumChain<T>(Node<T> head)
 ```
 
 ### Parameters
--head: The head node of the linked list.
+- head: The head node of the linked list.
 
 ### Type Parameters
 - T: The type of values stored in the linked list.
@@ -130,8 +130,8 @@ public static Node<T> RemoveValueCompletely<T>(Node<T> head, T value)
 ```
 
 ### Parameters
--head: The head node of the list.
--value: The value to be removed.
+- head: The head node of the list.
+- value: The value to be removed.
 
 ### Type Parameters
 - T: The type of values stored in the nodes.
@@ -210,9 +210,9 @@ public static Node<T> InsertAtIndex<T>(Node<T> head, T value, int index)
 ```
 
 ### Parameters
--head: The head node of the linked list.
--value: The value to be inserted.
--index: The index at which the value should be inserted.
+- head: The head node of the linked list.
+- value: The value to be inserted.
+- index: The index at which the value should be inserted.
 
 ### Type Parameters
 - T: The type of values stored in the linked list.
@@ -232,7 +232,7 @@ public static Node<T> Reverse<T>(Node<T> head)
 ```
 
 ### Parameters
--head: The head node of the linked list.
+- head: The head node of the linked list.
 
 ### Type Parameters
 - T: The type of values stored in the linked list.
@@ -334,7 +334,7 @@ public static Tuple<Node<T>, Node<T>> SplitInHalf<T>(Node<T> head)
 ```
 
 ### Parameters
--head: The head node of the linked list to be split.
+- head: The head node of the linked list to be split.
 
 ### Type Parameters
 - T: The type of values stored in the linked list.
@@ -395,7 +395,7 @@ public static Node<int> Sort(Node<int> head)
 ```
 
 ### Parameters
--head: The head of the linked list to be sorted.
+- head: The head of the linked list to be sorted.
 
 ### Return
 The head of the sorted linked list.
