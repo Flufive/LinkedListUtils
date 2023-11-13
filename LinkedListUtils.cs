@@ -1,10 +1,11 @@
-﻿using System.Transactions;
 using System;
-using Unit4.CollectionsLib;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using ModelsCsharp;
+using System.Threading.Tasks;
+using Unit4.CollectionsLib;
 
-namespace AhYes
+namespace LinkedListUtils
 {
     /// <summary>
     /// This class has pretty much every single method you can ever want for a linked list using Unit 4.
@@ -17,60 +18,67 @@ namespace AhYes
     /// No idea why you would need all of this.
     /// Enjoy you freaks
     /// </summary>
-    public class LinkedListUtils
-    {
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
 #pragma warning disable CS8604 // Possible null reference argument.
 #pragma warning disable CS8603 // Possible null reference return.
 
+    public static class Utils
+    {
         /// <summary>
-        /// Merges 2 linked lists into new linked list
+        /// This method merges 2 linked lists.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="head1"></param>
-        /// <param name="head2"></param>
-        /// <returns></returns>
-        public static Node<T> mergeLists<T>(Node<T> head1, Node<T> head2)
+        /// <param name="head1">Head of first list</param>
+        /// <param name="head2">Head of second list</param>
+        /// <returns>The head of the new, merged list.</returns>
+        public static Node<T> MergeLists<T>(Node<T> head1, Node<T> head2)
         {
-            Node<T> pos = head1;
-            while (pos.GetNext() != null)
+            if (head1 == null) return head2;
+            if (head2 == null) return head1;
+
+            Node<T> lastNode = head1;
+            while (lastNode.GetNext() != null)
             {
-                pos = pos.GetNext();
+                lastNode = lastNode.GetNext();
             }
 
-            pos.SetNext(head2);
-            pos = head1;
-            return pos;
+            lastNode.SetNext(head2);
+            return head1;
         }
+
         /// <summary>
-        /// This method prints out an integer node chain.
+        /// This method prints out a linked list.
         /// </summary>
-        /// <param name="head">The head of the chain.</param>
-        public static void printChain<T>(Node<T> head)
+        /// <typeparam name="T"></typeparam>
+        /// <param name="head">The head of the list.</param>
+        public static void PrintChain<T>(Node<T> head)
         {
-            //If this node is the last one, print a summative version of the pattern and return.
-            if (head.GetNext() == null)
+            if (head == null)
             {
-                Console.WriteLine("[ " + head.GetValue() + " ]");
                 return;
             }
 
-            //Base case: Print out the current node and an arrow representing a link to the next one.
-            Console.Write("[ " + head.GetValue() + " ] ---> ");
+            if (head.GetNext() == null)
+            {
+                Console.WriteLine("[ " + head.GetValue() + " ]");
+            }
 
-            //Recursively call the method on the next node.
-            printChain(head.GetNext());
-
+            Node<T> current = head;
+            while (current.GetNext() != null)
+            {
+                Console.Write("[ " + current.GetValue() + " ] ---> ");
+                current = current.GetNext();
+            }
+            Console.WriteLine("[ " + current.GetValue() + " ]");
         }
 
-        
         /// <summary>
-        /// This method sums up anode chain.
+        /// This method sums up a linked list.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="head">The head of the chain.</param>
-        /// <returns>The sum of the chain.</returns>
+        /// <param name="head">The head of the list.</param>
+        /// <returns>The sum of the list.</returns>
         public static T SumChain<T>(Node<T> head)
         {
             if (head == null)
@@ -90,58 +98,38 @@ namespace AhYes
         }
 
         /// <summary>
-        /// This method adds the max number in an integer chain to the end of the chain.
+        /// This method adds the max number in an integer list to the end of the list.
         /// </summary>
-        /// <param name="head">The head of the chain.</param>
-        public static void addMaxNumber(Node<int> head)
+        /// <param name="head">The head of the list.</param>
+        public static void AddMaxNumber(Node<int> head)
         {
-            Node<int> temp = head;
+            if (head == null) return;
 
-            // Traverse the linked list to find the last node.
-            while (temp.HasNext())
+            int max = head.GetValue();
+            Node<int> current = head;
+
+            while (current != null)
             {
-                temp = temp.GetNext();
+                max = Math.Max(max, current.GetValue());
+                current = current.GetNext();
             }
 
-            // Get the maximum value in the linked list.
-            int max = getMaxNumber(head, head.GetValue());
+            Node<int> lastNode = head;
+            while (lastNode.GetNext() != null)
+            {
+                lastNode = lastNode.GetNext();
+            }
 
-            // Create a new node with the maximum value and add it to the end of the linked list.
-            temp.SetNext(new Node<int>(max));
+            lastNode.SetNext(new Node<int>(max));
         }
 
         /// <summary>
-        /// This method recursively goes through an integer node chain and finds the highest number.
-        /// </summary>
-        /// <param name="head">The current node in the chain.</param>
-        /// <param name="max">The current max number. (if list is empty, return int.MinValue)</param>
-        /// <returns></returns>
-        public static int getMaxNumber(Node<int> head, int max)
-        {
-            // Base case: If the current node is null (end of the linked list), return the minimum possible value.
-            if (head == null)
-            {
-                return int.MinValue;
-            }
-
-            // Check if the current node is the last node in the linked list (base case).
-            if (!head.HasNext())
-            {
-                // Return the maximum of the current node's value and the maximum encountered so far.
-                return Math.Max(max, head.GetValue());
-            }
-
-            // Recursively call the method with the next node and the updated maximum value.
-            return getMaxNumber(head.GetNext(), Math.Max(max, head.GetValue()));
-        }
-
-        /// <summary>
-        /// This method looks for a value within a node chain.
+        /// This method looks for a value within a linked list.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="head">The current node in the chain.</param>
+        /// <param name="head">The current node in the list.</param>
         /// <param name="value">The value we want to look for.</param>
-        /// <returns></returns>
+        /// <returns>True if the value exists within the list, otherwise false.</returns>
         public static bool IsExist<T>(Node<T> head, T value)
         {
             Node<T> current = head;
@@ -157,11 +145,12 @@ namespace AhYes
         }
 
         /// <summary>
-        /// This method removes the first instance of a value within a node chain.
+        /// This method removes the first instance of a value within a linked list.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="head">The head of the chain.</param>
+        /// <param name="head">The head of the list.</param>
         /// <param name="value">The value we want to remove.</param>
+        /// <returns>The head of the updated list.</returns>
         public static Node<T> RemoveValueOnce<T>(Node<T> head, T value)
         {
             if (head == null)
@@ -188,119 +177,57 @@ namespace AhYes
         }
 
         /// <summary>
-        /// This method recursively removes every instance of a number within an integer node chain.
+        /// Removes all occurrences of a specified value within a linked list.
         /// </summary>
-        /// <param name="head">The current head of the chain.</param>
-        /// <param name="num">The number we want to remove.</param>
-        public static void removeNumberCompletely(Node<int> head, int num)
+        /// <typeparam name="T">The type of the values stored in the nodes.</typeparam>
+        /// <param name="head">The head of the list.</param>
+        /// <param name="value">The value to be removed.</param>
+        /// <returns>The head of the updated list.</returns>
+        public static Node<T> RemoveValueCompletely<T>(Node<T> head, T value)
         {
-            // Check if the number doesn't exist in the linked list.
-            if (!IsExist(head, num))
+            // Check if the provided 'head' node is null (the chain is empty).
+            if (head == null)
             {
-                return;
+                // If the chain is empty, there's nothing to remove, so return without making any changes.
+                return null;
             }
 
-
-            // Handle the case where the number to remove is at the head of the linked list.
-            while (head != null && head.GetValue() == num)
-            {
-                head = head.GetNext();
-            }
-
-            Node<int> temp = head;
-
-            // Iterate through the linked list to find and remove all occurrences of 'num'.
-            while (temp != null && temp.GetNext() != null)
-            {
-                if (temp.GetNext().GetValue() == num)
-                {
-                    temp.SetNext(temp.GetNext().GetNext());
-                }
-                else
-                {
-                    temp = temp.GetNext();
-                }
-            }
-        }
-
-        /// <summary>
-        /// This helper method takes an input of names and creates a string node chain of them.
-        /// </summary>
-        /// <param name="head">The head of the chain.</param>
-        /// <returns>A string node chain of the inputted names.</returns>
-        private static Node<string> inputNames(Node<string> head)
-        {
-            string input = "";
-
-            // Prompt the user to enter a name.
-            Console.WriteLine("Enter name: ");
-
-            // Read the user's input from the console.
-            input = Console.ReadLine();
-
-            // If the user enters "XXX," return the current head without adding more names.
-            if (input == "XXX")
+            if (!IsExist(head, value)) // Value doesn't even exist within list, no changes need to be made.
             {
                 return head;
             }
 
-            // Recursively add the new name to the linked list and update the head.
-            return new Node<string>(head.GetValue(), inputNames(new Node<string>(input)));
-        }
-
-        /// <summary>
-        /// This method takes inputs of names, creating a string node chain in the process, and then running over it and checking how many of the names begin with a/A.
-        /// </summary>
-        /// <returns>The amount of names beginning with A or a.</returns>
-        public static int namesStartingWithA()
-        {
-            string input;
-
-            // Prompt the user to enter a name.
-            Console.WriteLine("Enter name: ");
-
-            // Read the user's input from the console.
-
-            input = Console.ReadLine();
-
-            // If the user enters "XXX," return 0.
-            if (input == "XXX")
+            // Handle the case where the value to remove is at the head of the linked list.
+            while (head != null && EqualityComparer<T>.Default.Equals(head.GetValue(), value))
             {
-                return 0;
+                head = head.GetNext();
             }
 
-            // Create a linked list node with the user's input as the initial value.
-            Node<string> names = new Node<string>(input);
+            Node<T> current = head;
 
-
-            int count = 0;
-
-            // Input more names and add them to the linked list.
-            names = inputNames(names);
-
-            // Initialize a temporary node pointer to traverse the linked list.
-            Node<string> temp = names;
-
-            // Count names that start with 'A' or 'a'.
-            while (temp != null)
+            // Iterate through the linked list to find and remove all occurrences of 'value'.
+            while (current != null && current.GetNext() != null)
             {
-                if (temp.GetValue()[0] == 'A' || temp.GetValue()[0] == 'a')
+                if (EqualityComparer<T>.Default.Equals(current.GetNext().GetValue(), value))
                 {
-                    count++;
+                    // Skip the node containing 'value' by adjusting the next pointer.
+                    current.SetNext(current.GetNext().GetNext());
                 }
-                temp = temp.GetNext();
+                else
+                {
+                    current = current.GetNext();
+                }
             }
 
-            // Return the count of names that start with 'A' or 'a'.
-            return count;
+            return head;
         }
 
         /// <summary>
-        /// This method deletes all duplicates from an integer node chain, and compresses it to its imperial form.
+        /// This method deletes all duplicates from a linked list, and compresses it to its imperial form.
         /// </summary>
-        /// <param name="chain">The head of the chain.</param>
+        /// <param name="chain">The head of the list.</param>
         /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <returns>The head of the updated list.</returns>
         public static Node<T> compressSequences<T>(Node<T> chain)
         {
             // Create a new linked list to store the compressed characters, initialized with the first character from the input chain.
@@ -314,7 +241,7 @@ namespace AhYes
             while (pos1 != null)
             {
                 // Check if the character at pos1 is different from the character at pos2.
-                if (!EqualityComparer<T>.Default.Equals(pos1.GetValue(),pos2.GetValue()))
+                if (!EqualityComparer<T>.Default.Equals(pos1.GetValue(), pos2.GetValue()))
                 {
                     // If they are different, create a new node in the newChain with the character from pos1.
                     pos2.SetNext(new Node<T>(pos1.GetValue()));
@@ -332,11 +259,12 @@ namespace AhYes
         }
 
         /// <summary>
-        /// This method adds a node to the end of a node chain.
+        /// This method adds a node to the end of a linked list.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="head">The head of the node chain.</param>
+        /// <param name="head">The head of the list.</param>
         /// <param name="value">The value which represents the value of the newly added node.</param>
+        /// <returns>The head of the updated list.</returns>
 
         public static Node<T> AddToEnd<T>(Node<T> head, T value)
         {
@@ -355,10 +283,10 @@ namespace AhYes
         }
 
         /// <summary>
-        /// This method adds an integer node to the start of an integer node chain.
+        /// This method adds a node to the start of a linked list.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="head">The head of the integer node chain.</param>
+        /// <param name="head">The head of the list.</param>
         /// <param name="value">The number which represents the value of the newly added node.</param>
         public static void AddToStart<T>(ref Node<T> head, T value)
         {
@@ -378,14 +306,14 @@ namespace AhYes
         }
 
         /// <summary>
-        /// Adds a specified value to the middle of a node chain at the specified index.
+        /// Adds a specified value to the middle of a linked list at the specified index.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="head">The head of the integer node chain.</param>
-        /// <param name="value">The number to be added to the chain.</param>
-        /// <param name="index">The index at which the number should be added.</param>
-        /// <returns>The head of the updated integer node chain.</returns>
-        public static Node<T> AddToIndex<T>(Node<T> head, T value, int index)
+        /// <param name="head">The head of the linked list.</param>
+        /// <param name="value">The value to be inserted to the list.</param>
+        /// <param name="index">The index at which the value should be inserted.</param>
+        /// <returns>The head of the updated list.</returns>
+        public static Node<T> InsertAtIndex<T>(Node<T> head, T value, int index)
         {
             if (index < 0)
             {
@@ -419,6 +347,7 @@ namespace AhYes
 
             return head;
         }
+
         /// <summary>
         /// Reverses the order of nodes in the linked list.
         /// </summary>
@@ -506,14 +435,14 @@ namespace AhYes
         /// <param name="value">The value to delete.</param>
         /// <typeparam name="T"></typeparam>
         /// <returns>The head of the updated linked list.</returns>
-        public static Node<T> DeleteNodeWithValue<T>(Node<T> head,T value)
+        public static Node<T> DeleteNodeWithValue<T>(Node<T> head, T value)
         {
             // If the linked list is empty, there's nothing to delete, so return null
             if (head == null)
                 return null;
 
             // Check if the value to delete is in the head node
-            if (EqualityComparer<T>.Default.Equals(head.GetValue(),value))
+            if (EqualityComparer<T>.Default.Equals(head.GetValue(), value))
             {
                 // Return the next node as the new head, effectively removing the current head
                 return head.GetNext();
@@ -526,7 +455,7 @@ namespace AhYes
             while (current.GetNext() != null)
             {
                 // Check if the value to delete is in the next node
-                if (EqualityComparer<T>.Default.Equals(current.GetNext().GetValue(),value))
+                if (EqualityComparer<T>.Default.Equals(current.GetNext().GetValue(), value))
                 {
                     // Update the 'current' node's next reference to skip the next node,
                     // effectively removing it from the list
@@ -613,157 +542,127 @@ namespace AhYes
         }
 
         /// <summary>
-        /// Determines whether a loop exists in the linked list.
+        /// Determines whether a loop exists in a linked list.
         /// </summary>
+        /// <typeparam name="T">The type of values stored in the linked list.</typeparam>
         /// <param name="head">The head node of the linked list.</param>
-        /// <typeparam name="T"></typeparam>
         /// <returns>True if a loop is detected; otherwise, false.</returns>
         public static bool HasLoop<T>(Node<T> head)
         {
-            // If the linked list is empty, there can be no loop
             if (head == null)
                 return false;
 
-            // Initialize two pointers, 'slow' and 'fast', both starting at the head
             Node<T> slow = head;
             Node<T> fast = head;
 
-            // Traverse the list with 'fast' moving twice as fast as 'slow'
-            // If there's a loop, 'fast' will eventually catch up to 'slow'
             while (fast != null && fast.GetNext() != null)
             {
-                slow = slow.GetNext();       // Move 'slow' one step
-                fast = fast.GetNext().GetNext(); // Move 'fast' two steps
+                slow = slow.GetNext();
+                fast = fast.GetNext().GetNext();
 
-                // If 'slow' and 'fast' meet at the same node, a loop is detected
                 if (slow == fast)
                     return true;
             }
 
-            // If the loop completes without 'fast' catching up to 'slow', there's no loop
             return false;
         }
 
         /// <summary>
         /// Removes duplicates from a sorted linked list, keeping only the distinct values.
         /// </summary>
+        /// <typeparam name="T">The type of values stored in the linked list.</typeparam>
         /// <param name="head">The head node of the sorted linked list.</param>
         /// <returns>The head of the updated sorted linked list.</returns>
-        public static Node<int> RemoveDuplicates(Node<int> head)
+        public static Node<T> RemoveDuplicates<T>(Node<T> head)
         {
-            // Start with the current node pointing to the head
-            Node<int> current = head;
+            Node<T> current = head;
 
-            // Traverse the list while there are nodes to process
             while (current != null && current.GetNext() != null)
             {
-                // Check if the current node's value is the same as the next node's value
-                if (current.GetValue() == current.GetNext().GetValue())
+                if (EqualityComparer<T>.Default.Equals(current.GetValue(), current.GetNext().GetValue()))
                 {
-                    // If they are the same, skip the next node by updating 'current's next reference
                     current.SetNext(current.GetNext().GetNext());
                 }
                 else
                 {
-                    // If they are not the same, move to the next node
                     current = current.GetNext();
                 }
             }
 
-            // Return the head of the updated sorted linked list with duplicates removed
             return head;
         }
 
         /// <summary>
         /// Splits a linked list into two halves and returns a tuple containing the heads of the two halves.
         /// </summary>
+        /// <typeparam name="T">The type of values stored in the linked list.</typeparam>
         /// <param name="head">The head node of the linked list to be split.</param>
-        /// <typeparam name="T"></typeparam>
         /// <returns>A tuple containing the heads of the two halves.</returns>
         public static Tuple<Node<T>, Node<T>> SplitInHalf<T>(Node<T> head)
         {
-            // If the linked list is empty, return a tuple with two null references
             if (head == null)
                 return new Tuple<Node<T>, Node<T>>(null, null);
 
-            // Initialize two pointers, 'slow' and 'fast', both starting at the head
             Node<T> slow = head;
             Node<T> fast = head;
 
-            // Traverse the list with 'fast' moving twice as fast as 'slow'
-            // This way, 'slow' will be at the middle when 'fast' reaches the end
             while (fast.GetNext() != null && fast.GetNext().GetNext() != null)
             {
-                slow = slow.GetNext();       // Move 'slow' one step
-                fast = fast.GetNext().GetNext(); // Move 'fast' two steps
+                slow = slow.GetNext();
+                fast = fast.GetNext().GetNext();
             }
 
-            // Get the head of the second half of the list
             Node<T> secondHalfHead = slow.GetNext();
-
-            // Break the link between the two halves by setting 'slow's next to null
             slow.SetNext(null);
 
-            // Return a tuple containing the heads of the first and second halves
             return new Tuple<Node<T>, Node<T>>(head, secondHalfHead);
         }
 
         /// <summary>
-        /// Returns the middle node of the linked list, or the first middle node in the case of an even-length list.
+        /// Returns the middle node of a linked list, or the first middle node in the case of an even-length list.
         /// </summary>
+        /// <typeparam name="T">The type of values stored in the linked list.</typeparam>
         /// <param name="head">The head node of the linked list.</param>
-        /// <typeparam name="T"></typeparam>
         /// <returns>The middle node of the linked list.</returns>
         public static Node<T> FindMiddle<T>(Node<T> head)
         {
-            // If the linked list is empty, return null
             if (head == null)
                 return null;
 
-            // Initialize two pointers, 'slow' and 'fast', both starting at the head
             Node<T> slow = head;
             Node<T> fast = head;
 
-            // Traverse the list with 'fast' moving twice as fast as 'slow'
-            // This way, 'slow' will be at the middle when 'fast' reaches the end
             while (fast.GetNext() != null && fast.GetNext().GetNext() != null)
             {
-                slow = slow.GetNext();       // Move 'slow' one step
-                fast = fast.GetNext().GetNext(); // Move 'fast' two steps
+                slow = slow.GetNext();
+                fast = fast.GetNext().GetNext();
             }
 
-            // Return the 'slow' pointer, which is now at the middle node
             return slow;
         }
 
         /// <summary>
-        /// Inserts a new node with the specified value at the end of the linked list.
+        /// Inserts a new node with the specified value at the end of a linked list.
         /// </summary>
+        /// <typeparam name="T">The type of values stored in the linked list.</typeparam>
         /// <param name="head">The head node of the linked list.</param>
         /// <param name="value">The value to insert.</param>
-        /// <typeparam name="T"></typeparam>
         /// <returns>The head of the updated linked list.</returns>
         public static Node<T> InsertAtEnd<T>(Node<T> head, T value)
         {
-            // Create a new node with the given value
             Node<T> newNode = new Node<T>(value);
 
-            // If the linked list is empty, the new node becomes the head
             if (head == null)
                 return newNode;
 
-            // Traverse the linked list to find the last node
             Node<T> current = head;
             while (current.GetNext() != null)
             {
                 current = current.GetNext();
             }
 
-            // Set the next node of the last node to the new node,
-            // effectively inserting it at the end of the list
             current.SetNext(newNode);
 
-            // Return the head of the updated linked list
             return head;
         }
 
@@ -776,20 +675,17 @@ namespace AhYes
         {
             if (head == null || !head.HasNext())
             {
-                return head; // Already sorted (empty or single-node list)
+                return head;
             }
 
-            // Split the linked list into two halves
             Node<int> middle = FindMiddle(head);
             Node<int> leftHalf = head;
             Node<int> rightHalf = middle.GetNext();
-            middle.SetNext(null); // Disconnect the two halves
+            middle.SetNext(null);
 
-            // Recursively sort each half
             leftHalf = Sort(leftHalf);
             rightHalf = Sort(rightHalf);
 
-            // Merge the sorted halves
             return Merge(leftHalf, rightHalf);
         }
 
@@ -801,7 +697,7 @@ namespace AhYes
         /// <returns>The head of the merged sorted linked list.</returns>
         private static Node<int> Merge(Node<int> left, Node<int> right)
         {
-            Node<int> merged = new Node<int>(0); // Dummy node for the merged list
+            Node<int> merged = new Node<int>(0);
             Node<int> current = merged;
 
             while (left != null && right != null)
@@ -819,7 +715,6 @@ namespace AhYes
                 current = current.GetNext();
             }
 
-            // Append any remaining nodes from both lists
             if (left != null)
             {
                 current.SetNext(left);
@@ -829,11 +724,12 @@ namespace AhYes
                 current.SetNext(right);
             }
 
-            return merged.GetNext(); // Skip the dummy node
+            return merged.GetNext();
         }
     }
+}
+
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 #pragma warning restore CS8603 // Possible null reference return.
 #pragma warning restore CS8604 // Possible null reference argument.
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-}
