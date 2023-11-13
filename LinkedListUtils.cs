@@ -20,7 +20,6 @@ namespace LinkedListUtils
     /// </summary>
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8604 // Possible null reference argument.
 #pragma warning disable CS8603 // Possible null reference return.
 
     public static class Utils
@@ -731,5 +730,4 @@ namespace LinkedListUtils
 
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 #pragma warning restore CS8603 // Possible null reference return.
-#pragma warning restore CS8604 // Possible null reference argument.
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
