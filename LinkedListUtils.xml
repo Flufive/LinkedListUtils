@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LinkedListUtils</name>
+    </assembly>
+    <members>
+        <member name="T:LinkedListUtils.Utils">
+            <summary>
+            This class has pretty much every single method you can ever want for a linked list using Unit 4.
+            This is made specifically for Goldwater School's 11th grade Computer Science program, within the frame of Data Bases course.
+            This specific bit of code can be used as open material for any future test regarding linked lists.
+            This project is free for use and distribution only within the Goldwater School's 11th grade Computer Science program. Any other use is prohibited.
+            This took me like 10 hours.
+            Final version released November 11th, 2023.
+            About 850 lines of code, fully documented.
+            No idea why you would need all of this.
+            Enjoy you freaks
+            </summary>
+        </member>
+        <member name="M:LinkedListUtils.Utils.MergeLists``1(Unit4.CollectionsLib.Node{``0},Unit4.CollectionsLib.Node{``0})">
+            <summary>
+            This method merges 2 linked lists.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="head1">Head of first list</param>
+            <param name="head2">Head of second list</param>
+            <returns>The head of the new, merged list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.printChain``1(Unit4.CollectionsLib.Node{``0})">
+            <summary>
+            This method prints out a linked list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="head">The head of the list.</param>
+        </member>
+        <member name="M:LinkedListUtils.Utils.SumChain``1(Unit4.CollectionsLib.Node{``0})">
+            <summary>
+            This method sums up a linked list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="head">The head of the list.</param>
+            <returns>The sum of the list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.AddMaxNumber(Unit4.CollectionsLib.Node{System.Int32})">
+            <summary>
+            This method adds the max number in an integer list to the end of the list.
+            </summary>
+            <param name="head">The head of the list.</param>
+        </member>
+        <member name="M:LinkedListUtils.Utils.IsExist``1(Unit4.CollectionsLib.Node{``0},``0)">
+            <summary>
+            This method looks for a value within a linked list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="head">The current node in the list.</param>
+            <param name="value">The value we want to look for.</param>
+            <returns>True if the value exists within the list, otherwise false.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.RemoveValueOnce``1(Unit4.CollectionsLib.Node{``0},``0)">
+            <summary>
+            This method removes the first instance of a value within a linked list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="head">The head of the list.</param>
+            <param name="value">The value we want to remove.</param>
+            <returns>The head of the updated list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.RemoveValueCompletely``1(Unit4.CollectionsLib.Node{``0},``0)">
+            <summary>
+            Removes all occurrences of a specified value within a linked list.
+            </summary>
+            <typeparam name="T">The type of the values stored in the nodes.</typeparam>
+            <param name="head">The head of the list.</param>
+            <param name="value">The value to be removed.</param>
+            <returns>The head of the updated list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.compressSequences``1(Unit4.CollectionsLib.Node{``0})">
+            <summary>
+            This method deletes all duplicates from a linked list, and compresses it to its imperial form.
+            </summary>
+            <param name="chain">The head of the list.</param>
+            <typeparam name="T"></typeparam>
+            <returns>The head of the updated list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.AddToEnd``1(Unit4.CollectionsLib.Node{``0},``0)">
+            <summary>
+            This method adds a node to the end of a linked list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="head">The head of the list.</param>
+            <param name="value">The value which represents the value of the newly added node.</param>
+            <returns>The head of the updated list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.AddToStart``1(Unit4.CollectionsLib.Node{``0}@,``0)">
+            <summary>
+            This method adds a node to the start of a linked list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="head">The head of the list.</param>
+            <param name="value">The number which represents the value of the newly added node.</param>
+        </member>
+        <member name="M:LinkedListUtils.Utils.InsertAtIndex``1(Unit4.CollectionsLib.Node{``0},``0,System.Int32)">
+            <summary>
+            Adds a specified value to the middle of a linked list at the specified index.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="head">The head of the linked list.</param>
+            <param name="value">The value to be inserted to the list.</param>
+            <param name="index">The index at which the value should be inserted.</param>
+            <returns>The head of the updated list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.Reverse``1(Unit4.CollectionsLib.Node{``0})">
+            <summary>
+            Reverses the order of nodes in the linked list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="head">The head node of the linked list.</param>
+            <returns>The new head of the reversed linked list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.GetLength``1(Unit4.CollectionsLib.Node{``0})">
+            <summary>
+            Calculates and returns the number of nodes in the linked list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="head">The head node of the linked list.</param>
+            <returns>The length of the linked list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.GetNthFromEnd``1(Unit4.CollectionsLib.Node{``0},System.Int32)">
+            <summary>
+            Returns the nth node from the end of the linked list.
+            </summary>
+            <param name="head">The head node of the linked list.</param>
+            <param name="n">The position from the end (1-based).</param>
+            <typeparam name="T"></typeparam>
+            <returns>The nth node from the end, or null if n is out of range.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.DeleteNodeWithValue``1(Unit4.CollectionsLib.Node{``0},``0)">
+            <summary>
+            Deletes the first occurrence of a node with the specified value from the linked list.
+            </summary>
+            <param name="head">The head node of the linked list.</param>
+            <param name="value">The value to delete.</param>
+            <typeparam name="T"></typeparam>
+            <returns>The head of the updated linked list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.MergeSortedLists(Unit4.CollectionsLib.Node{System.Int32},Unit4.CollectionsLib.Node{System.Int32})">
+            <summary>
+            Merges two sorted linked lists into a single sorted linked list.
+            </summary>
+            <param name="list1">The head node of the first sorted linked list.</param>
+            <param name="list2">The head node of the second sorted linked list.</param>
+            <returns>The head of the merged sorted linked list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.HasLoop``1(Unit4.CollectionsLib.Node{``0})">
+            <summary>
+            Determines whether a loop exists in a linked list.
+            </summary>
+            <typeparam name="T">The type of values stored in the linked list.</typeparam>
+            <param name="head">The head node of the linked list.</param>
+            <returns>True if a loop is detected; otherwise, false.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.RemoveDuplicates``1(Unit4.CollectionsLib.Node{``0})">
+            <summary>
+            Removes duplicates from a sorted linked list, keeping only the distinct values.
+            </summary>
+            <typeparam name="T">The type of values stored in the linked list.</typeparam>
+            <param name="head">The head node of the sorted linked list.</param>
+            <returns>The head of the updated sorted linked list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.SplitInHalf``1(Unit4.CollectionsLib.Node{``0})">
+            <summary>
+            Splits a linked list into two halves and returns a tuple containing the heads of the two halves.
+            </summary>
+            <typeparam name="T">The type of values stored in the linked list.</typeparam>
+            <param name="head">The head node of the linked list to be split.</param>
+            <returns>A tuple containing the heads of the two halves.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.FindMiddle``1(Unit4.CollectionsLib.Node{``0})">
+            <summary>
+            Returns the middle node of a linked list, or the first middle node in the case of an even-length list.
+            </summary>
+            <typeparam name="T">The type of values stored in the linked list.</typeparam>
+            <param name="head">The head node of the linked list.</param>
+            <returns>The middle node of the linked list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.InsertAtEnd``1(Unit4.CollectionsLib.Node{``0},``0)">
+            <summary>
+            Inserts a new node with the specified value at the end of a linked list.
+            </summary>
+            <typeparam name="T">The type of values stored in the linked list.</typeparam>
+            <param name="head">The head node of the linked list.</param>
+            <param name="value">The value to insert.</param>
+            <returns>The head of the updated linked list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.Sort(Unit4.CollectionsLib.Node{System.Int32})">
+            <summary>
+            Sorts an integer linked list in ascending order using Merge Sort.
+            </summary>
+            <param name="head">The head of the linked list to be sorted.</param>
+            <returns>The head of the sorted linked list.</returns>
+        </member>
+        <member name="M:LinkedListUtils.Utils.Merge(Unit4.CollectionsLib.Node{System.Int32},Unit4.CollectionsLib.Node{System.Int32})">
+            <summary>
+            Merges two sorted linked lists into a single sorted linked list.
+            </summary>
+            <param name="left">The head of the left sorted linked list.</param>
+            <param name="right">The head of the right sorted linked list.</param>
+            <returns>The head of the merged sorted linked list.</returns>
+        </member>
+    </members>
+</doc>
