@@ -13,8 +13,8 @@ namespace LinkedListUtils
     /// This specific bit of code can be used as open material for any future test regarding linked lists.
     /// This project is free for use and distribution only within the Goldwater School's 11th grade Computer Science program. Any other use is prohibited.
     /// This took me like 10 hours.
-    /// Final version released November 11th, 2023.
-    /// About 850 lines of code, fully documented.
+    /// Final version released November 13th, 2023.
+    /// About 720 lines of code, fully documented.
     /// No idea why you would need all of this.
     /// Enjoy you freaks
     /// </summary>
