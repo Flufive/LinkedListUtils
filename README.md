@@ -7,7 +7,7 @@ some utility methods for Linked Lists, using Unit4's Linked List implementation.
 ### 3. Right click on *dependencies* -> *add project refrence* and select both dlls 
 ### 4. Add these lines to your code: 
 ```csharp
-using Unit4;
+using Unit4.CollectionsLib;
 using static LinkedListUtils.Utils;
 ```
 
