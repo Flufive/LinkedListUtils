@@ -3,7 +3,7 @@ some utility methods for Linked Lists, using Unit4's Linked List implementation.
 
 ## INSTRUCTIONS:
 ### 1. Download and extract LinkedListUtils.dll and Unit4.dll to desktop
-### 2. Open visual studio and create a new project as ConsoleApp  
+### 2. Open visual studio and create a new C# project
 ### 3. Right click on *dependencies* -> *add project refrence* and select both dlls 
 ### 4. Add these lines to your code: 
 ```csharp
