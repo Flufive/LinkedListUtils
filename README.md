@@ -11,6 +11,6 @@ using Unit4.CollectionsLib;
 using static LinkedListUtils.Utils;
 ```
 
-If you want to modify/look at the source code for `LinkedListUtils`, just drag the `LinkedListUtils.cs` file from the folder into your project window, and copy & paste the code into your own project.
+- If you want to modify/look at the source code for `LinkedListUtils`, just drag the `LinkedListUtils.cs` file from the folder into your project window, and copy & paste the code into your own project.
 
 You're all done!!
